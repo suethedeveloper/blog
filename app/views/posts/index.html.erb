@@ -1,0 +1,47 @@
+<div class="currentPage">
+  <%= link_to "", writers_path, class: "glyphicon glyphicon-home" %>&nbsp; > &nbsp;Posts &nbsp;> Index
+</div>
+<br><br>
+
+  All the postings by <strong><%= @posts[0].writer["first_name"] %> <%= @posts[0].writer["last_name"] %></strong>
+
+<br><br>
+<table class="table table-hover">
+  <tr class="active">
+    <th>No</th>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Date</th>
+    <th>Views</th>
+  </tr>
+  <tbody>
+
+<% 
+  counter = 1
+  @posts.each do |post| 
+%>
+    <tr>
+      <td><%= counter %> </td>
+      <td><%= post.category %></td>
+      <td> <%= link_to "#{post.title}", post_path(post) %></td>
+      <td><%= post.created_at %></td>
+      <td><span class="badge">viewed</span></td>
+    </tr>
+
+<% 
+  counter += 1
+  end 
+%>
+  </tbody>
+    <tr>
+      <td colspan="5" align="right">
+        <br>
+        <%= link_to "Write a new post", new_writer_post_path(@writer), class: "btn btn-default" %>
+      </td>
+    </tr>
+</table>
+
+
+
+ 
+
