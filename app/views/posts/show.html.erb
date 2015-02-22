@@ -4,10 +4,14 @@
 <div>
   <span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; > <%= link_to "#{@post.writer["first_name"]} #{@post.writer["last_name"]}", writer_path(@post) %>&nbsp; > &nbsp;<%= @post.category %>
 </div>
-<br><br>
-<div><%= @post.title %></div><div display="inline" class="text-right"><%= @post.created_at %> <span class="badge">viewed?</span>&nbsp;&nbsp;<button type="button" class="btn btn-default">like </button>
-</div>
 <br>
+<% if flash[:notice] %>
+<div id="notice" class="alert alert-success"><%= flash[:notice] %></div>
+<br>
+<% end %>
+<div><%= @post.title %></div><div display="inline" class="text-right"><%= l @post.created_at, format: :long %> <span class="badge">viewed?</span>
+</div>
+<br><br>
  <div class="well"><%= @post.body %></div>
 <br><br>
 <div class="mainlinks">

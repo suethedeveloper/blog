@@ -2,8 +2,7 @@
   <%= link_to "", writers_path, class: "glyphicon glyphicon-home" %>&nbsp; > &nbsp;Posts &nbsp;> Index
 </div>
 <br><br>
-
-  All the postings by <strong><%= @posts[0].writer["first_name"] %> <%= @posts[0].writer["last_name"] %></strong>
+All the postings by <strong><%= @posts[0].writer["first_name"] %> <%= @posts[0].writer["last_name"] %></strong>
 
 <br><br>
 <table class="table table-hover">
@@ -11,7 +10,7 @@
     <th>No</th>
     <th>Category</th>
     <th>Title</th>
-    <th>Date</th>
+    <th>Last updated</th>
     <th>Views</th>
   </tr>
   <tbody>
@@ -24,7 +23,7 @@
       <td><%= counter %> </td>
       <td><%= post.category %></td>
       <td> <%= link_to "#{post.title}", post_path(post) %></td>
-      <td><%= post.created_at %></td>
+      <td><%= l post.created_at, format: :long %></td>
       <td><span class="badge">viewed</span></td>
     </tr>
 

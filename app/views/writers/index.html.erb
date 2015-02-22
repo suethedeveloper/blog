@@ -2,11 +2,16 @@
   <%= link_to "", writers_path, class: "glyphicon glyphicon-home" %>&nbsp; > &nbsp;Writers &nbsp;> Index
 </div>
 <br><br>
+<% if flash[:notice] %>
+<div id="notice" class="alert alert-success"><%= flash[:notice] %></div>
+<br><br>
+<% end %>
 <table class="table table-hover">
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Age</th>
+    <th>Joined</th>
     <th></th>
   </tr>
   <tbody>
@@ -17,6 +22,7 @@
       <td><strong><%= writer.first_name %></strong></td>
       <td><%= writer.last_name %></td>
       <td><%= writer.age %></td>
+      <td><%= l writer.created_at, format: :long %></td>
       <td><%= link_to "See more about #{writer.first_name} #{writer.last_name}", writer_path(writer) %></td>
     </tr>
 
@@ -28,7 +34,7 @@
     <% if @writers.length == 0 %>
 
     <tr>
-      <td colspan="4" align="center">
+      <td colspan="5" align="center">
         <br>
         <strong class="text-danger">There is no writer.</strong>
       </td>
@@ -39,7 +45,7 @@
 
 
     <tr>
-      <td colspan="4" align="right">
+      <td colspan="5" align="right">
         <br>
         <%= link_to "Add new writer", new_writer_path, class: "btn btn-default"  %>
       

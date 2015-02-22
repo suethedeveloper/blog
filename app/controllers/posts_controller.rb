@@ -24,6 +24,7 @@ class PostsController < ApplicationController
     @post = Post.new post_params
     @post.writer = @writer
     if @post.save
+      flash[:notice] = 'New posting has created!'
       redirect_to writer_posts_path
     else
       render :new

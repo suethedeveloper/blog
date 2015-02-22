@@ -10,11 +10,21 @@ class WritersController < ApplicationController
   def create
     @writer = Writer.new writer_params
     if @writer.save
+      flash[:notice] = 'New Writer Has Created!'
       redirect_to writers_path
     else 
-      render :new
+      render action: 'new'
     end     
   end
+
+  # def create
+  #   @writer = Writer.new writer_params
+  #   if @writer.save
+  #     redirect_to writers_path
+  #   else 
+  #     render :new
+  #   end     
+  # end
 
   def show
     @writer = Writer.find params[:id]
