@@ -1,10 +1,14 @@
 <div class="currentPage">
   <%= link_to "", writers_path, class: "glyphicon glyphicon-home" %>&nbsp; > &nbsp;Posts &nbsp;> Index
 </div>
-<br><br>
+<br>
+<% if @posts.length > 0 %>
 All the postings by <strong><%= @posts[0].writer["first_name"] %> <%= @posts[0].writer["last_name"] %></strong>
-
 <br><br>
+<% else %>
+There is no posting.
+<br><br>
+<% end %>
 <table class="table table-hover">
   <tr class="active">
     <th>No</th>
@@ -23,7 +27,7 @@ All the postings by <strong><%= @posts[0].writer["first_name"] %> <%= @posts[0].
       <td><%= counter %> </td>
       <td><%= post.category %></td>
       <td> <%= link_to "#{post.title}", post_path(post) %></td>
-      <td><%= l post.created_at, format: :long %></td>
+      <td><%= l post.updated_at, format: :long %></td>
       <td><span class="badge">viewed</span></td>
     </tr>
 

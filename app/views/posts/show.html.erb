@@ -9,7 +9,7 @@
 <div id="notice" class="alert alert-success"><%= flash[:notice] %></div>
 <br>
 <% end %>
-<div><%= @post.title %></div><div display="inline" class="text-right"><%= l @post.created_at, format: :long %> <span class="badge">viewed?</span>
+<div><%= @post.title %></div><div display="inline" class="text-right"><%= l @post.updated_at, format: :long %> <span class="badge">viewed?</span>
 </div>
 <br><br>
  <div class="well"><%= @post.body %></div>
